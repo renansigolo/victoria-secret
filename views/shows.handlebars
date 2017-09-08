@@ -1,0 +1,19 @@
+<section>
+
+  <h1 class="text-center mt-3 mb-3">Shows</h1>
+  <div class="row">
+    {{#each show}}
+      <div class="col d-flex justify-content-around mb-3">
+        <div class="card" style="width: 20rem;">
+          <div class="embed-responsive embed-responsive-16by9">
+            <iframe class="embed-responsive-item" src= {{video}} allowfullscreen></iframe>
+          </div>
+          <div class="card-body text-center">
+            <h4 class="card-title">{{name}}</h4>
+            <p class="card-text">{{date}}</p>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</section>

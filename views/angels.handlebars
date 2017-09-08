@@ -1,0 +1,15 @@
+<section>
+  <h1 class="text-center mt-3 mb-3">Angels</h1>
+  <div class="row">
+    {{#each angels}}
+      <div class="col d-flex justify-content-around mb-3">
+        <div class="card" style="width: 20rem;">
+          <img class="card-img-top" src="img/angels/{{img}}" alt="Card image cap">
+          <div class="card-body text-center">
+            <h4 class="card-title">{{name}}</h4>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </div>
+</section>
