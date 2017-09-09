@@ -2,9 +2,11 @@
 const express = require('express');
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 const infoJson = require('./data/info.json');
 const angelsJson = require('./data/angels.json');
 const homeJson = require('./data/home.json');
+const loginsJson = require('./data/logins.json');
 const sendmail = require('sendmail')();
 
 const app = express();
@@ -15,13 +17,21 @@ app.engine('handlebars', exphbs({
 }));
 app.set('view engine', 'handlebars');
 
+//MIDDLEWARES
 //Express serve static files from assets folder
 app.use(express.static('assets'))
-
-// parse application/x-www-form-urlencoded
+//Parse application
 app.use(bodyParser.urlencoded({
   extended: false
 }))
+//Express Session
+app.use(session({
+  secret: 'bla bla bla cat',
+  cookie: {
+    maxAge: 60000
+  }
+}))
+
 
 //Routes
 app.get('/', (req, res) => {
@@ -36,8 +46,37 @@ app.get('/shows', (req, res) => {
     show: infoJson
   });
 });
+app.post('/angels', (req, res) => {
+
+  let nomeForm = req.body.email;
+  let passForm = req.body.password;
+
+  for (login of loginsJson) {
+    if (nomeForm !== login.email && passForm !== login.password) {
+      console.log('Ops');
+    } else {
+      return res.redirect('/angels-protected');
+    }
+  }
+
+
+});
 app.get('/angels', (req, res) => {
-  res.render('angels', {
+
+  for (login of loginsJson) {
+    console.log(login.email);
+  }
+  res.render('angels');
+});
+app.get('/angels-protected', (req, res) => {
+
+  // if (req.session.email) {
+  //   res.render('angels-protected');
+  // } else {
+  //   res.redirect('/angels');
+  // }
+
+  res.render('angels-protected', {
     angelsActive: true,
     angels: angelsJson
   });

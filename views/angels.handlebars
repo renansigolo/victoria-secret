@@ -1,15 +1,22 @@
 <section>
   <h1 class="text-center mt-3 mb-3">Angels</h1>
+  <p class="text-center mt-3 mb-3">Opsss, para ver esta pagina é necessario fazer o login</p>
   <div class="row">
-    {{#each angels}}
-      <div class="col d-flex justify-content-around mb-3">
-        <div class="card" style="width: 20rem;">
-          <img class="card-img-top" src="img/angels/{{img}}" alt="Card image cap">
-          <div class="card-body text-center">
-            <h4 class="card-title">{{name}}</h4>
-          </div>
+    <div class="col">
+      <form class="container bg-light pt-2 pb-2" method="post">
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="email" value="" aria-describedby="emailHelp" placeholder="Digite seu email...">
         </div>
-      </div>
-    {{/each}}
+        <div class="form-group">
+          <label for="password">Senha</label>
+          <input type="password" class="form-control" id="password" name="password" value="" placeholder="Insira sua senha">
+          <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Me leve até as Angels</button>
+      </form>
+    </div>
+
   </div>
 </section>
