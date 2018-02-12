@@ -1,3 +1,3 @@
-# victoria-secret
+# Victoria Secret
 
-BackEnd Project
+My first BackEnd Project
